@@ -86,11 +86,11 @@ export function SessionManager() {
                 )}
                 <div className="absolute right-1 top-1/2 -translate-y-1/2 flex items-center opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 data-[state=active]:opacity-100 transition-opacity">
                   {editingSessionId !== session.id && (
-                     <Button variant="ghost" size="icon" className="h-6 w-6" onClick={(e) => { e.stopPropagation(); startEditing(session); }}>
+                     <Button asChild variant="ghost" size="icon" className="h-6 w-6" onClick={(e) => { e.stopPropagation(); startEditing(session); }}>
                        <Edit3 size={14} />
                      </Button>
                   )}
-                   <Button variant="ghost" size="icon" className="h-6 w-6 hover:text-destructive" onClick={(e) => { e.stopPropagation(); deleteSession(session.id); }}>
+                   <Button asChild variant="ghost" size="icon" className="h-6 w-6 hover:text-destructive" onClick={(e) => { e.stopPropagation(); deleteSession(session.id); }}>
                      <Trash2 size={14} />
                    </Button>
                 </div>
