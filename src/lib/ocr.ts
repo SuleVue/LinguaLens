@@ -1,3 +1,4 @@
+
 import { createWorker, RecognizeResult, Worker } from 'tesseract.js';
 import type { OcrLanguage } from '@/types';
 
@@ -23,14 +24,9 @@ async function getWorker(): Promise<Worker> {
 
   worker = await createWorker();
   workerReady = false; // Set to false until languages are loaded
-
-  // Preload common languages or load them on demand later.
-  // For simplicity, we will load them dynamically in the recognizeText function.
-  // If performance is an issue, preload common languages here.
-  // e.g. await worker.loadLanguage('eng');
-  // await worker.initialize('eng');
   
-  workerReady = true; // If no preloading, consider it ready.
+  // Languages will be loaded dynamically in recognizeText
+  workerReady = true; 
   return worker;
 }
 
@@ -48,28 +44,23 @@ export async function recognizeText(
   const currentWorker = await getWorker();
   
   // Ensure languages are loaded for the current job
-  // Tesseract.js handles dynamic loading if not preloaded
   await currentWorker.loadLanguage(tesseractLangs);
   await currentWorker.initialize(tesseractLangs);
   
-  // Optional: Set Tesseract parameters if needed
-  // await currentWorker.setParameters({
-  //   tessedit_char_whitelist: '0123456789abcdefghijklmnopqrstuvwxyz',
-  // });
+  const workerJobOptions: { logger?: (m: { status: string; progress?: number }) => void } = {};
 
-  const { data } = await currentWorker.recognize(imageDataUrl, {}, {
-    logger: progressCallback ? (m) => {
-      if (m.status === 'recognizing text') {
-        progressCallback(Math.floor(m.progress * 100));
+  if (progressCallback) {
+    // Explicitly capture the progressCallback to ensure a clean closure
+    const capturedProgressCallback = progressCallback; 
+    workerJobOptions.logger = (m) => {
+      if (m.status === 'recognizing text' && typeof m.progress === 'number') {
+        capturedProgressCallback(Math.floor(m.progress * 100));
       }
-    } : undefined,
-  });
-  
-  // Optional: Terminate worker after each job to free resources if not frequently used
-  // await currentWorker.terminate();
-  // worker = null;
-  // workerReady = false;
+    };
+  }
 
+  const { data } = await currentWorker.recognize(imageDataUrl, {}, workerJobOptions);
+  
   return data.text;
 }
 
@@ -81,3 +72,4 @@ export async function terminateWorker() {
     workerReady = false;
   }
 }
+
