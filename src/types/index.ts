@@ -1,3 +1,4 @@
+
 export type OcrLanguage = "eng" | "amh" | "orm" | "tir";
 export type AiLanguage = "en" | "am" | "or" | "ti";
 
@@ -24,9 +25,9 @@ export interface Translations {
   appName: string;
   newSession: string;
   uploadImage: string;
-  uploadInstruction: string;
-  dragDropOr: string;
-  browseFiles: string;
+  uploadInstruction: string; // Modified: Will combine drag/drop and click
+  // dragDropOr: string; // Removed
+  // browseFiles: string; // Removed
   selectOcrLanguages: string;
   suggestLanguages: string;
   extractText: string;
@@ -47,6 +48,8 @@ export interface Translations {
   errorTextDownload: string;
   loadingOcr: string;
   loadingSuggestions: string;
+  processingImage: string; // Added
+  clickOrDragToChange: string; // Added
   languages: {
     en: string;
     am: string;

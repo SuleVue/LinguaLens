@@ -1,3 +1,4 @@
+
 import type { UiLanguage, Translations } from "@/types";
 
 export const translations: Record<UiLanguage, Translations> = {
@@ -5,9 +6,7 @@ export const translations: Record<UiLanguage, Translations> = {
     appName: "LinguaLens",
     newSession: "New Session",
     uploadImage: "Upload Image",
-    uploadInstruction: "Drag & drop an image here, or click to select",
-    dragDropOr: "or",
-    browseFiles: "Browse Files",
+    uploadInstruction: "Drag & drop an image here, or click to select.",
     selectOcrLanguages: "Select OCR Language(s)",
     suggestLanguages: "Suggest Languages (AI)",
     extractText: "Extract Text",
@@ -28,6 +27,8 @@ export const translations: Record<UiLanguage, Translations> = {
     errorTextDownload: "Error preparing text for download.",
     loadingOcr: "Extracting text...",
     loadingSuggestions: "Analyzing image...",
+    processingImage: "Processing image...",
+    clickOrDragToChange: "Click or drag to change image.",
     languages: {
       en: "English",
       am: "Amharic",
@@ -46,9 +47,7 @@ export const translations: Record<UiLanguage, Translations> = {
     appName: "ሊንጓሌንስ",
     newSession: "አዲስ ክፍለ ጊዜ",
     uploadImage: "ምስል ስቀል",
-    uploadInstruction: "ምስል እዚህ ይጎትቱ እና ይጣሉ፣ ወይም ለመምረጥ ጠቅ ያድርጉ",
-    dragDropOr: "ወይም",
-    browseFiles: "ፋይሎችን ያስሱ",
+    uploadInstruction: "ምስል እዚህ ይጎትቱ እና ይጣሉ፣ ወይም ለመምረጥ ጠቅ ያድርጉ።",
     selectOcrLanguages: "የOCR ቋንቋ(ዎች) ይምረጡ",
     suggestLanguages: "ቋንቋዎችን ጠቁም (AI)",
     extractText: "ጽሑፍ አውጣ",
@@ -69,6 +68,8 @@ export const translations: Record<UiLanguage, Translations> = {
     errorTextDownload: "ጽሑፍ ለማውረድ በማዘጋጀት ላይ ስህተት።",
     loadingOcr: "ጽሑፍ በማውጣት ላይ...",
     loadingSuggestions: "ምስል በመተንተን ላይ...",
+    processingImage: "ምስል በማዘጋጀት ላይ...",
+    clickOrDragToChange: "ምስል ለመቀየር ጠቅ ያድርጉ ወይም ይጎትቱ።",
     languages: {
       en: "እንግሊዝኛ",
       am: "አማርኛ",
@@ -84,12 +85,10 @@ export const translations: Record<UiLanguage, Translations> = {
     aiSuggested: "AI የተጠቆመ",
   },
   om: {
-    appName: "LinguaLens", // Placeholder, needs Oromifa translation
+    appName: "LinguaLens", 
     newSession: "Garee Haaraa",
     uploadImage: "Suura Olkaa'i",
-    uploadInstruction: "Suura asitti harkisiitii buusi, yookiin filachuuf cuqaasi",
-    dragDropOr: "yookiin",
-    browseFiles: "Faayiloota Sakatta'i",
+    uploadInstruction: "Suura asitti harkisiitii buusi, yookiin filachuuf cuqaasi.",
     selectOcrLanguages: "Afaan(oota) OCR Filadhu",
     suggestLanguages: "Afaanota Yaada Kenni (AI)",
     extractText: "Barruu Baasi",
@@ -110,6 +109,8 @@ export const translations: Record<UiLanguage, Translations> = {
     errorTextDownload: "Barruu buufachuuf qopheessuu irratti dogoggorri uumame.",
     loadingOcr: "Barruu baasaa jira...",
     loadingSuggestions: "Suura qorachaa jira...",
+    processingImage: "Suura qopheessaa jira...",
+    clickOrDragToChange: "Suura jijjiiruuf cuqaasi yookiin harkisi.",
     languages: {
       en: "Ingiliffa",
       am: "Amaariffa",
@@ -125,12 +126,10 @@ export const translations: Record<UiLanguage, Translations> = {
     aiSuggested: "AI Yaadni Kenname",
   },
   ti: {
-    appName: "ሊንጓሌንስ", // Placeholder, needs Tigrinya translation
+    appName: "ሊንጓሌንስ", 
     newSession: "ሓድሽ सत्र",
     uploadImage: "ስእሊ ስቀል",
-    uploadInstruction: "ስእሊ ኣብዚ ጎተት ኣቢልካ ኣውርድ፣ ወይ ንምምራጽ ጠውቕ",
-    dragDropOr: "ወይ",
-    browseFiles: "ፋይላት ኣለሹ",
+    uploadInstruction: "ስእሊ ኣብዚ ጎተት ኣቢልካ ኣውርድ፣ ወይ ንምምራጽ ጠውቕ።",
     selectOcrLanguages: "ቋንቋ(ታት) OCR ምረጽ",
     suggestLanguages: "ቋንቋታት ምኽሪ ሃብ (AI)",
     extractText: "ጽሑፍ ኣውጽእ",
@@ -151,6 +150,8 @@ export const translations: Record<UiLanguage, Translations> = {
     errorTextDownload: "ጽሑፍ ንምውራድ ኣብ ምድላው ስሕተት ኣጋጢሙ።",
     loadingOcr: "ጽሑፍ እናውጸአ...",
     loadingSuggestions: "ስእሊ እናተንተነ...",
+    processingImage: "ስእሊ እናዳለወ...",
+    clickOrDragToChange: "ስእሊ ንምቕያር ጠውቕ ወይ ጎተት።",
     languages: {
       en: "እንግሊዝኛ",
       am: "ኣምሓርኛ",
