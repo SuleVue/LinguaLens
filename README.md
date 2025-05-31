@@ -1,6 +1,6 @@
-# Firebase Studio
+# LinguaLens
 
-This project is a Next.js application utilizing Firebase Studio. It appears to be an Optical Character Recognition (OCR) workspace with image upload, text editing, language selection, and session management capabilities.
+This project is a Next.js application. It appears to be an Optical Character Recognition (OCR) workspace with image upload, text editing, language selection, and session management capabilities.
 
 ## Description
 
