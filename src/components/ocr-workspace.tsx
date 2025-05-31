@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect } from "react";
@@ -49,11 +50,8 @@ export function OcrWorkspace() {
     try {
       const text = await recognizeText(
         activeSession.imageUrl,
-        activeSession.selectedOcrLanguages,
-        (progress) => {
-          // Optional: update progress in UI if needed
-          // console.log(`OCR Progress: ${progress}%`);
-        }
+        activeSession.selectedOcrLanguages
+        // Progress callback argument removed
       );
       if (text.trim() === "") {
         updateSession(activeSession.id, { extractedText: "", isLoadingOcr: false, ocrError: t("errorNoTextFound"), textHistory: [''], historyPointer: 0 });
@@ -145,3 +143,4 @@ export function OcrWorkspace() {
     </ScrollArea>
   );
 }
+
