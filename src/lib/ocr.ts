@@ -1,5 +1,5 @@
 
-import { createWorker, RecognizeResult, Worker } from 'tesseract.js';
+import { createWorker, Worker, LogMessage } from 'tesseract.js';
 import type { OcrLanguage } from '@/types';
 
 let worker: Worker | null = null;
@@ -47,19 +47,27 @@ export async function recognizeText(
   await currentWorker.loadLanguage(tesseractLangs);
   await currentWorker.initialize(tesseractLangs);
   
-  const workerJobOptions: { logger?: (m: { status: string; progress?: number }) => void } = {};
+  // This will be the third argument to recognize.
+  // It's either undefined or an object with a logger property.
+  let jobOutputOptions: { logger: (m: LogMessage) => void } | undefined = undefined;
 
   if (progressCallback) {
     // Explicitly capture the progressCallback to ensure a clean closure
+    // and to satisfy type checking if progressCallback could be undefined here.
     const capturedProgressCallback = progressCallback; 
-    workerJobOptions.logger = (m) => {
-      if (m.status === 'recognizing text' && typeof m.progress === 'number') {
-        capturedProgressCallback(Math.floor(m.progress * 100));
-      }
+    jobOutputOptions = {
+      logger: (m: LogMessage) => { // m is of type Tesseract.LogMessage
+        if (m.status === 'recognizing text' && typeof m.progress === 'number') {
+          capturedProgressCallback(Math.floor(m.progress * 100));
+        }
+      },
     };
   }
 
-  const { data } = await currentWorker.recognize(imageDataUrl, {}, workerJobOptions);
+  // The second argument to recognize is for OCR-specific options (e.g., whitelist).
+  // The third argument is for job output options, like the logger.
+  // If jobOutputOptions is undefined, Tesseract.js should use its defaults.
+  const { data } = await currentWorker.recognize(imageDataUrl, {}, jobOutputOptions);
   
   return data.text;
 }
@@ -72,4 +80,3 @@ export async function terminateWorker() {
     workerReady = false;
   }
 }
-
